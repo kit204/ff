@@ -1,0 +1,14 @@
+{
+  "name": "autotrader-dealer-scraper",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Scrapes AutoTrader UK's dealer search for dealers near a postcode, filtered by stock size and excluding franchise groups.",
+  "type": "commonjs",
+  "main": "scrape_autotrader_dealers.js",
+  "scripts": {
+    "start": "node scrape_autotrader_dealers.js"
+  },
+  "dependencies": {
+    "playwright": "^1.56.1"
+  }
+}
