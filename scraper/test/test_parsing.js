@@ -1,15 +1,14 @@
 // Standalone sanity test for the extraction/filter/CSV pipeline, run against
 // a local mock HTML fixture (no network access required). This proves the
-// parsing logic works; it does not prove AutoTrader's live markup still
-// matches the SELECTORS guesses in scrape_autotrader_dealers.js.
+// parsing logic works; it does not prove any site's live markup still
+// matches the selector guesses in sites/*.js.
 
 'use strict';
 
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
-
-const mod = require('../scrape_autotrader_dealers.js');
+const { parseDealerBlock, isExcludedGroup, filterDealers } = require('../lib/common');
 
 async function run() {
   const html = fs.readFileSync(path.join(__dirname, 'mock_search_page.html'), 'utf8');
@@ -27,30 +26,30 @@ async function run() {
     const text = await card.innerText();
     const linkEl = await card.$('a');
     const href = linkEl ? await linkEl.getAttribute('href') : null;
-    const parsed = mod.parseDealerBlock(text, href);
-    results.push(parsed);
+    results.push(parseDealerBlock(text, href));
   }
 
-  console.log(JSON.stringify(results, null, 2));
+  const excludeGroups = [
+    'JCT600',
+    'Vertu',
+    'Evans Halshaw',
+    'Stoneacre',
+    'D.M. Keith',
+    'DM Keith',
+    'Cars2',
+    'RRG',
+    'Arnold Clark',
+    'Big Motoring World',
+  ];
+  const filtered = filterDealers(results, { minCars: 20, excludeGroups });
 
-  const filtered = results.filter((d) => {
-    if (!d.name) return false;
-    if (mod.isExcludedGroup(d.name)) return false;
-    if (d.carsOnForecourt === null || d.carsOnForecourt < 20) return false;
-    return true;
-  });
-
-  console.log('--- Filtered (>=20 cars, non-franchise) ---');
   console.log(JSON.stringify(filtered, null, 2));
 
-  const expectedNames = ['Leeds Independent Motors', 'Headingley Quality Cars'];
+  const expectedNames = ['Headingley Quality Cars', 'Leeds Independent Motors'];
   const gotNames = filtered.map((d) => d.name).sort();
-  const ok =
-    gotNames.length === expectedNames.length &&
-    gotNames.every((n, i) => n === expectedNames.sort()[i]);
+  const ok = JSON.stringify(gotNames) === JSON.stringify(expectedNames);
 
   console.log(ok ? 'PASS' : 'FAIL');
-
   await browser.close();
   process.exitCode = ok ? 0 : 1;
 }
