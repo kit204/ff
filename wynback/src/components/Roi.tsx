@@ -16,7 +16,7 @@ function NumberField({ label, value, onChange, min, max, step = 1, prefix, suffi
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={id} className="text-[length:var(--text-body)]">{label}</label>
-      <div className="flex h-14 items-center bg-surface-2 px-4 focus-within:outline-3 focus-within:outline-accent">
+      <div className="flex h-14 items-center rounded-[12px] bg-surface px-4 focus-within:outline-3 focus-within:outline-accent">
         {prefix && <span className="text-muted" aria-hidden="true">{prefix}</span>}
         <input
           id={id}
@@ -75,7 +75,7 @@ export function Roi() {
   ];
 
   return (
-    <section id="roi" className="frame bg-bg pt-[var(--gap-section)] pb-[clamp(72px,8vw,128px)]" aria-labelledby="roi-title">
+    <section id="roi" className="frame bg-tint pt-[clamp(72px,8vw,128px)] pb-[clamp(72px,8vw,128px)]" aria-labelledby="roi-title">
       <div className="grid12 gap-y-14">
         <div className="col-span-12 flex flex-col lg:col-span-6">
           <div data-reveal>
@@ -107,8 +107,8 @@ export function Roi() {
                 {plans.map((p) => (
                   <label
                     key={p.id}
-                    className={`flex min-h-14 cursor-pointer items-center justify-between gap-3 px-4 py-3 transition-colors duration-[var(--t-hover)] has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-accent ${
-                      planId === p.id ? "bg-accent text-accent-ink" : "bg-surface-2 hover:bg-surface-3"
+                    className={`flex min-h-14 cursor-pointer items-center justify-between gap-3 rounded-[12px] px-4 py-3 transition-colors duration-[var(--t-hover)] has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-accent ${
+                      planId === p.id ? "bg-accent text-accent-ink" : "bg-surface hover:bg-accent-soft"
                     }`}
                   >
                     <input type="radio" name="roi-plan" value={p.id} checked={planId === p.id} onChange={() => setPlanId(p.id)} className="sr-only" />
@@ -126,7 +126,7 @@ export function Roi() {
           </form>
 
           <div className="mt-14" aria-live="polite">
-            <p className="tnum text-[clamp(3.5rem,17vw,6rem)] leading-[0.9] font-medium tracking-[-0.045em] md:text-[clamp(6rem,10vw,10.5rem)]">
+            <p className="tnum text-[clamp(3.5rem,17vw,6rem)] leading-[0.9] font-semibold tracking-[-0.05em] text-accent md:text-[clamp(5rem,8.5vw,9rem)]">
               {formatGBP(Math.round(net))}
             </p>
             <p className="tnum mt-5 max-w-[48ch] text-[17px]">
@@ -153,7 +153,7 @@ export function Roi() {
                 </dl>
               </div>
             ))}
-            <div className="-mx-3 flex items-baseline bg-paper-ink px-3 py-3 font-semibold text-ink">
+            <div className="-mx-3 flex items-baseline rounded-[8px] bg-accent px-3 py-3 font-semibold text-accent-ink">
               <span className="shrink-0">Net profit a year</span>
               <span className="flex-1" />
               <span>{formatGBP(net)}</span>

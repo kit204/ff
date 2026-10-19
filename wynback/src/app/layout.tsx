@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { BillingProvider } from "@/components/Billing";
 import { RevealScript } from "@/components/Reveal";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f0f0f",
-  colorScheme: "dark light",
+  themeColor: "#fafafc",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={fraunces.variable}>
+    <html lang="en-GB" className={poppins.variable}>
       <body>
         <a href="#main" className="skip">Skip to content</a>
         <BillingProvider>

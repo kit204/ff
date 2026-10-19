@@ -4,23 +4,23 @@ import { BOOKING_URL, plans, pricing } from "@/content";
 import { formatGBP, monthlyPrice, useBilling } from "./Billing";
 
 const looks = [
-  { tile: "bg-surface text-ink", strip: "bg-bg text-ink hover:bg-surface-3", h: "lg:h-[400px] lg:row-start-2 lg:col-start-1 lg:self-end" },
-  { tile: "bg-paper-3 text-paper-ink", strip: "bg-[#cfcfcb] text-paper-ink hover:bg-[#bdbdb8]", h: "lg:h-[500px] lg:row-start-2 lg:col-start-2 lg:self-end" },
-  { tile: "bg-accent text-accent-ink", strip: "bg-accent-deep text-accent-ink hover:bg-[#adda55]", h: "lg:h-[640px] lg:row-span-2 lg:row-start-1 lg:col-start-3 lg:self-end" },
+  { tile: "bg-paper-2 text-paper-ink", strip: "bg-surface-3 text-paper-ink hover:bg-accent-soft", h: "lg:h-[400px] lg:row-start-2 lg:col-start-1 lg:self-end" },
+  { tile: "bg-accent text-accent-ink", strip: "bg-accent-deep text-accent-ink hover:bg-[#431c8f]", h: "lg:h-[500px] lg:row-start-2 lg:col-start-2 lg:self-end" },
+  { tile: "bg-paper-3 text-paper-ink", strip: "bg-[#ddd4f3] text-paper-ink hover:bg-accent-soft", h: "lg:h-[640px] lg:row-span-2 lg:row-start-1 lg:col-start-3 lg:self-end" },
 ];
 
 export function Pricing() {
   const { billing, setBilling } = useBilling();
   return (
-    <section id="pricing" className="on-paper frame bg-paper py-[var(--gap-section)] text-paper-ink" aria-labelledby="pricing-title">
+    <section id="pricing" className="on-paper frame bg-paper pt-[var(--gap-section)] pb-[clamp(72px,8vw,128px)] text-paper-ink" aria-labelledby="pricing-title">
       <div className="grid grid-cols-1 gap-2 lg:grid-cols-3 lg:grid-rows-[auto_auto]">
         <div data-reveal className="mb-8 lg:col-span-2 lg:row-start-1 lg:mb-0 lg:pr-8 lg:pb-12">
           <h2 id="pricing-title" className="text-[length:var(--text-head)]">{pricing.heading}</h2>
           <p className="mt-5 max-w-[44ch] text-[length:var(--text-body)]">{pricing.intro}</p>
-          <fieldset className="mt-7 inline-flex bg-paper-3 p-1">
+          <fieldset className="mt-7 inline-flex rounded-full bg-paper-3 p-1">
             <legend className="sr-only">Billing period</legend>
             {(["monthly", "annual"] as const).map((b) => (
-              <label key={b} className={`cursor-pointer px-4 py-3 text-[length:var(--text-body)] transition-colors duration-[var(--t-hover)] has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-paper-ink ${billing === b ? "bg-paper-ink text-ink" : "hover:bg-paper"}`}>
+              <label key={b} className={`cursor-pointer rounded-full px-5 py-3 text-[length:var(--text-body)] font-medium transition-colors duration-[var(--t-hover)] has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-accent ${billing === b ? "bg-accent text-accent-ink" : "hover:bg-paper"}`}>
                 <input type="radio" name="billing" value={b} checked={billing === b} onChange={() => setBilling(b)} className="sr-only" />
                 {b === "monthly" ? "Billed monthly" : "Billed annually, save 20%"}
               </label>
@@ -31,7 +31,7 @@ export function Pricing() {
         {plans.map((p, i) => {
           const price = monthlyPrice(p.monthly, billing);
           return (
-            <article key={p.id} className={`flex flex-col ${looks[i].tile} ${looks[i].h}`}>
+            <article key={p.id} className={`flex flex-col overflow-hidden rounded-[24px] ${looks[i].tile} ${looks[i].h}`}>
               <div className="flex flex-1 flex-col gap-2 p-7">
                 <h3 className="text-[28px] leading-none font-semibold">{p.name}</h3>
                 <p className="tnum mt-3 text-[44px] leading-none font-medium tracking-[-0.03em] lg:text-[56px]" aria-live="polite">

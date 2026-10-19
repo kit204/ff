@@ -9,7 +9,7 @@ export function Cta() {
         href={BOOKING_URL}
         target="_blank"
         rel="noopener"
-        className="group frame relative flex flex-col gap-10 bg-accent pt-6 pb-6 md:gap-16 text-accent-ink no-underline focus-visible:outline-offset-[-6px] focus-visible:outline-paper-ink hover:bg-bg hover:text-accent focus-visible:bg-bg focus-visible:text-accent md:min-h-[60svh]"
+        className="group frame relative flex flex-col gap-10 bg-accent pt-6 pb-6 md:gap-16 text-accent-ink no-underline focus-visible:outline-offset-[-6px] focus-visible:outline-white hover:bg-accent-deep focus-visible:bg-accent-deep md:min-h-[60svh]"
       >
         <span className="flex items-start gap-4">
           <span className="max-w-[34ch] text-[17px] md:text-[20px]">{cta.line}</span>

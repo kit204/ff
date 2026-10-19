@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BOOKING_URL, CONTACT_EMAIL, footer, nav } from "@/content";
 import { Arrow } from "./Arrow";
@@ -7,7 +8,7 @@ export function Footer() {
   return (
     <footer className="on-paper frame flex flex-col bg-paper pt-10 pb-6 text-paper-ink">
       <div className="grid12 items-start gap-y-4 text-[length:var(--text-small)]">
-        <p className="col-span-12 text-[length:var(--text-lead)] leading-none font-semibold md:col-span-3">Wynback</p>
+        <p className="col-span-12 md:col-span-3"><Image src="/wynback-logo.png" alt="Wynback" width={281} height={78} className="h-8 w-auto" /></p>
         <p className="col-span-12 max-w-[36ch] md:col-span-5">{footer.about}</p>
         <a href="#main" className="link col-span-12 md:col-span-4 md:justify-self-end">Back to top</a>
       </div>
@@ -17,7 +18,7 @@ export function Footer() {
           href={BOOKING_URL}
           target="_blank"
           rel="noopener"
-          className="group flex items-end gap-[0.15em] text-[clamp(3rem,11vw,11rem)] leading-[0.9] font-medium tracking-[-0.04em] no-underline"
+          className="group flex items-end gap-[0.15em] text-[clamp(2.75rem,9vw,9rem)] leading-[0.95] font-semibold tracking-[-0.045em] text-accent no-underline"
         >
           <span className="underline decoration-[0.04em] underline-offset-[0.12em] decoration-transparent transition-[text-decoration-color] duration-200 group-hover:decoration-current">
             {footer.contactLine}

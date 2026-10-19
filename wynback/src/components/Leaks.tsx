@@ -19,8 +19,8 @@ export function Leaks() {
                 onClick={() => setSel(i)}
                 onMouseEnter={() => setSel(i)}
                 onFocus={() => setSel(i)}
-                className={`grid w-full grid-cols-12 gap-x-4 px-4 py-4 text-left transition-colors duration-[var(--t-ui)] md:px-6 md:py-5 ${
-                  on ? "bg-accent text-accent-ink" : "bg-paper-3 hover:bg-paper"
+                className={`grid w-full grid-cols-12 gap-x-4 rounded-[16px] px-4 py-4 text-left transition-colors duration-[var(--t-ui)] md:px-6 md:py-5 ${
+                  on ? "bg-accent text-accent-ink" : "bg-paper-3 hover:bg-accent-soft"
                 }`}
               >
                 <span className="col-span-12 text-[clamp(1.875rem,4.6vw,4.75rem)] leading-[1.05] font-medium tracking-[-0.03em]">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { BOOKING_URL, nav } from "@/content";
@@ -9,12 +10,12 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   return (
     <header className="frame absolute inset-x-0 top-0 z-40 flex h-[72px] items-center justify-between gap-6 md:h-[88px]">
-      <Link href="/" className="text-[length:var(--text-lead)] font-semibold tracking-[-0.01em] no-underline" aria-label="Wynback home">
-        Wynback
+      <Link href="/" className="shrink-0" aria-label="Wynback home">
+        <Image src="/wynback-logo.png" alt="Wynback" width={281} height={78} priority className="h-8 w-auto md:h-9" />
       </Link>
       <nav aria-label="Main" className="hidden items-center gap-8 lg:flex">
         {nav.map((n) => (
-          <Link key={n.href} href={n.href} className="link text-[length:var(--text-body)] no-underline hover:underline">
+          <Link key={n.href} href={n.href} className="text-[length:var(--text-body)] font-medium no-underline transition-colors duration-[var(--t-hover)] hover:text-accent">
             {n.label}
           </Link>
         ))}

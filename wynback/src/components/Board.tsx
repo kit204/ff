@@ -17,16 +17,16 @@ const rows = [
 
 const statusClass: Record<string, string> = {
   Booked: "bg-accent text-accent-ink",
-  Replied: "bg-paper text-paper-ink",
+  Replied: "bg-accent-soft text-accent",
   Opened: "bg-surface-3 text-ink",
-  Sent: "bg-surface-3 text-muted",
-  "To approve": "bg-muted text-paper-ink",
+  Sent: "bg-surface-2 text-muted",
+  "To approve": "bg-ink text-surface",
 };
 
 export function Board() {
   const [open, setOpen] = useState(3);
   return (
-    <section className="bg-bg pb-[var(--gap-section)]" aria-labelledby="board-title">
+    <section className="bg-surface-2 py-[var(--gap-section)]" aria-labelledby="board-title">
       <div data-reveal className="frame grid12 items-end gap-y-6 pb-10">
         <h2 id="board-title" className="col-span-12 text-[length:var(--text-head)] md:col-span-7">This month&rsquo;s milestones</h2>
         <p className="col-span-12 max-w-[42ch] md:col-span-5 md:col-start-8">
@@ -43,8 +43,8 @@ export function Board() {
                   type="button"
                   onClick={() => setOpen(i)}
                   aria-expanded={isOpen}
-                  className={`grid w-full grid-cols-12 items-start gap-x-4 px-4 text-left transition-[height,background-color] duration-[450ms] ease-[var(--ease-in-out)] md:px-6 ${
-                    isOpen ? "h-[200px] bg-accent text-accent-ink md:h-[216px]" : "h-[64px] bg-surface text-ink hover:bg-surface-2 md:h-[72px]"
+                  className={`grid w-full grid-cols-12 items-start gap-x-4 rounded-[14px] px-4 text-left transition-[height,background-color] duration-[450ms] ease-[var(--ease-in-out)] md:px-6 ${
+                    isOpen ? "h-[200px] bg-accent text-accent-ink md:h-[216px]" : "h-[64px] bg-surface text-ink hover:bg-accent-soft md:h-[72px]"
                   }`}
                 >
                   <span className={`col-span-8 truncate pt-[18px] text-[20px] font-medium md:col-span-4 md:pt-[18px] md:text-[length:var(--text-lead)] ${isOpen ? "text-[28px] md:text-[length:var(--text-head)] md:leading-[1]" : ""}`}>
@@ -53,7 +53,7 @@ export function Board() {
                   <span className="hidden truncate pt-[22px] text-[length:var(--text-body)] md:col-span-3 md:block">{r.car}</span>
                   <span className="tnum hidden pt-[22px] text-[length:var(--text-body)] md:col-span-2 md:block">{r.months} months</span>
                   <span className="col-span-4 flex justify-end pt-[14px] md:col-span-3 md:pt-[16px]">
-                    <span className={`px-3 py-[8px] text-[length:var(--text-small)] font-semibold ${isOpen ? "bg-accent-ink text-accent" : statusClass[r.status]}`}>
+                    <span className={`rounded-full px-3 py-[8px] text-[length:var(--text-small)] font-semibold whitespace-nowrap ${isOpen ? "bg-accent-ink text-accent" : statusClass[r.status]}`}>
                       {r.status}
                     </span>
                   </span>

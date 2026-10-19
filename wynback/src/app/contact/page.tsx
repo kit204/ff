@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <>
-      <section className="frame grid12 min-h-[100svh] items-center gap-y-12 bg-bg pt-[120px] pb-20" aria-labelledby="contact-title">
+      <section className="frame grid12 min-h-[100svh] items-center gap-y-12 bg-tint pt-[120px] pb-20" aria-labelledby="contact-title">
         <div data-reveal className="col-span-12 lg:col-span-7">
           <h1 id="contact-title" className="text-[clamp(3rem,8vw,8rem)] leading-[0.92]">{contactPage.title}</h1>
           <p className="mt-6 max-w-[44ch] text-[length:var(--text-lead)] leading-[1.35]">{contactPage.line}</p>
@@ -28,7 +28,7 @@ export default function Contact() {
         <h2 id="agenda-title" className="mb-12 text-[length:var(--text-head)]">{contactPage.agendaHeading}</h2>
         <ol data-reveal className="grid gap-2 md:grid-cols-3">
           {contactPage.agenda.map((a, i) => (
-            <li key={a.name} className={`flex min-h-[260px] flex-col justify-between gap-8 p-7 ${["bg-paper-2", "bg-paper-3", "bg-accent"][i]}`}>
+            <li key={a.name} className={`flex min-h-[260px] flex-col justify-between gap-8 rounded-[24px] p-7 ${["bg-paper-2", "bg-paper-3", "bg-accent text-accent-ink"][i]}`}>
               <h3 className="text-[clamp(1.75rem,2.6vw,2.5rem)]">{a.name}</h3>
               <p className="text-[length:var(--text-body)]">{a.body}</p>
             </li>

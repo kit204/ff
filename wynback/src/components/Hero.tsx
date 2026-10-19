@@ -23,9 +23,9 @@ export function Hero() {
   const from = Math.min(...plans.map((p) => p.monthly));
 
   return (
-    <section className="frame flex min-h-[100svh] flex-col items-center bg-bg pt-[104px] pb-[12svh] md:pt-[112px]" aria-labelledby="hero-title">
+    <section className="frame flex min-h-[100svh] flex-col items-center bg-tint pt-[104px] pb-[10svh] md:pt-[112px]" aria-labelledby="hero-title">
       <div
-        className="relative aspect-[4/5] w-[78%] max-w-[400px] sm:w-[48%] lg:w-[24vw] lg:max-w-[400px]"
+        className="relative aspect-[4/5.8] w-[82%] max-w-[400px] sm:aspect-[4/5] sm:w-[48%] lg:w-[24vw] lg:max-w-[400px]"
         aria-roledescription="carousel"
         aria-label="Emails Wynback writes at three ownership milestones"
       >
@@ -41,13 +41,11 @@ export function Hero() {
         ))}
       </div>
 
-      <p className="wordmark-wide mt-10 max-w-[1040px] md:mt-12" aria-hidden="true">Wynback</p>
-
-      <div data-reveal className="mt-8 flex max-w-[44rem] flex-col items-center text-center md:mt-10">
-        <h1 id="hero-title" className="text-[clamp(2.25rem,3.4vw,3.25rem)] leading-[1.02] font-medium">
+      <div data-reveal className="mt-10 flex max-w-[58rem] flex-col items-center text-center md:mt-12">
+        <h1 id="hero-title" className="text-[clamp(2.25rem,4vw,3.75rem)] leading-[1.08] font-medium">
           {hero.title}
         </h1>
-        <p className="mt-6 max-w-[52ch] text-[length:var(--text-body)]">{hero.line}</p>
+        <p className="mt-6 max-w-[52ch] text-[length:var(--text-body)] text-muted">{hero.line}</p>
       </div>
 
       <div className="mt-9 flex w-full flex-col items-center gap-4 text-[length:var(--text-body)] sm:w-auto sm:flex-row sm:gap-12">

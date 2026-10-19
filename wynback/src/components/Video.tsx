@@ -13,12 +13,12 @@ function embedUrl(src: string) {
 export function Video() {
   const embed = VIDEO_SRC ? embedUrl(VIDEO_SRC) : null;
   return (
-    <section id="film" className="frame bg-bg pb-[clamp(72px,8vw,128px)]" aria-labelledby="film-title">
+    <section id="film" className="frame bg-tint pb-[clamp(72px,8vw,128px)]" aria-labelledby="film-title">
       <div data-reveal className="grid12 items-end gap-y-6 pb-10">
         <h2 id="film-title" className="col-span-12 text-[length:var(--text-head)] md:col-span-6">{video.title}</h2>
         <p className="col-span-12 max-w-[42ch] text-[length:var(--text-body)] md:col-span-5 md:col-start-8">{video.line}</p>
       </div>
-      <div className={`relative w-full overflow-hidden bg-surface-2 ${VIDEO_SRC ? "aspect-video" : "aspect-[4/5] sm:aspect-video"}`}>
+      <div className={`relative w-full overflow-hidden rounded-[24px] bg-tint ${VIDEO_SRC ? "aspect-video" : "aspect-[4/5] sm:aspect-video"}`}>
         {embed ? (
           <iframe className="absolute inset-0 h-full w-full" src={embed} title={video.title} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen loading="lazy" />
         ) : VIDEO_SRC ? (
