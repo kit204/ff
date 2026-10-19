@@ -42,3 +42,4 @@ next-env.d.ts
 
 # taste-skill inspector screenshots (regenerated each run)
 /.taste-skill/inspect*/
+/.next-export/
